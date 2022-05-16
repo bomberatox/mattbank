@@ -16,7 +16,7 @@ class _ContactFormState extends State<ContactForm> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Novo contato"),
+        title: const Text("Novo contato"),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),
@@ -44,13 +44,16 @@ class _ContactFormState extends State<ContactForm> {
               padding: const EdgeInsets.only(top: 16),
               child: SizedBox(
                   width: double.maxFinite,
-                  child:
-                      ElevatedButton(onPressed: () {
+                  child: ElevatedButton(
+                      onPressed: () {
                         final String name = _nameController.text;
-                        final int? accountNumber = int.tryParse(_accountNumberController.text);
-                        final Contact newContact = Contact(0, name, accountNumber!);
+                        final int? accountNumber =
+                            int.tryParse(_accountNumberController.text);
+                        final Contact newContact =
+                            Contact(0, name, accountNumber!);
                         Navigator.pop(context, newContact);
-                      }, child: Text("Salvar"))),
+                      },
+                      child: Text("Salvar"))),
             )
           ],
         ),

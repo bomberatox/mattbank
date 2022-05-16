@@ -4,10 +4,11 @@ import 'package:mattbank/screens/dashboard.dart';
 import 'database/appDatabase.dart';
 import 'modelo/contact.dart';
 
-void main() {
+void main() async {
   runApp(const MattBankApp());
-  save(Contact(0, 'Mariana', 2000));
-  findAll().then((contacts) => debugPrint(contacts.toString()));
+  await saveAsync(Contact(0, 'Mariana', 2000));
+  var contacts = await findAllAsync();
+  debugPrint(contacts.toString());
 }
 
 class MattBankApp extends StatelessWidget {
@@ -17,16 +18,12 @@ class MattBankApp extends StatelessWidget {
     return MaterialApp(
         theme: ThemeData(
             primaryColor: Colors.teal[400],
-            colorScheme: ColorScheme.fromSwatch()
-                .copyWith(primary: Colors.teal[400], secondary: Colors.cyanAccent[700]),
-        elevatedButtonTheme: ElevatedButtonThemeData(
-          style: ButtonStyle(
-            backgroundColor:
-              MaterialStateProperty.all(Colors.cyanAccent[700])
-          )
-        )),
+            colorScheme: ColorScheme.fromSwatch().copyWith(
+                primary: Colors.teal[400], secondary: Colors.cyanAccent[700]),
+            elevatedButtonTheme: ElevatedButtonThemeData(
+                style: ButtonStyle(
+                    backgroundColor:
+                        MaterialStateProperty.all(Colors.cyanAccent[700])))),
         home: Dashboard());
   }
 }
-
-

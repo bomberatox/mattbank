@@ -4,10 +4,14 @@ import 'package:mattbank/screens/contact_form.dart';
 
 import '../modelo/contact.dart';
 
-class ContactsList extends StatelessWidget {
+class ContactsList extends StatefulWidget {
   const ContactsList({Key? key}) : super(key: key);
 
+  @override
+  State<ContactsList> createState() => _ContactsListState();
+}
 
+class _ContactsListState extends State<ContactsList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,26 +19,40 @@ class ContactsList extends StatelessWidget {
         title: const Text("Contatos"),
       ),
       body: FutureBuilder(
-        initialData: [],
         future: findAllAsync(),
         builder: (context, snapshot) {
-          final List contacts = snapshot.data as List;
-          return ListView.builder(
-              itemBuilder: (context, index) {
-                final Contact contact = contacts[index];
-                return _ContactItem(contact);
-              },
-              itemCount: contacts.length);
-          },
+          switch (snapshot.connectionState) {
+            case ConnectionState.none:
+              break;
+            case ConnectionState.waiting:
+              return Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: const [
+                    CircularProgressIndicator(),
+                    Text("Carregando...")
+                  ],
+                ),
+              );
+            case ConnectionState.active:
+              break;
+            case ConnectionState.done:
+              final List contacts = snapshot.data as List;
+              return ListView.builder(
+                  itemBuilder: (context, index) {
+                    final Contact contact = contacts[index];
+                    return _ContactItem(contact);
+                  },
+                  itemCount: contacts.length);
+          }
+          return const Text("Erro desconhecido");
+        },
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.of(context)
-              .push(
-                  MaterialPageRoute(builder: (context) => const ContactForm()))
-              .then(
-                (newContact) => debugPrint(newContact.toString()),
-              );
+          Navigator.of(context).push(
+              MaterialPageRoute(builder: (context) => const ContactForm())).then((value) => setState(() {}));
         },
         child: const Icon(Icons.add),
       ),

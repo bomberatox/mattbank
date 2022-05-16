@@ -2,11 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:mattbank/screens/dashboard.dart';
 
 import 'database/app_database.dart';
-import 'modelo/contact.dart';
 
 void main() async {
   runApp(const MattBankApp());
-  await saveAsync(Contact(0, 'Mateus', 5500));
   var contacts = await findAllAsync();
   debugPrint(contacts.toString());
 }

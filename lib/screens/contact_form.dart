@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mattbank/modelo/contact.dart';
 
+import '../database/app_database.dart';
+
 class ContactForm extends StatefulWidget {
   const ContactForm({Key? key}) : super(key: key);
 
@@ -47,13 +49,15 @@ class _ContactFormState extends State<ContactForm> {
               child: SizedBox(
                   width: double.maxFinite,
                   child: ElevatedButton(
-                      onPressed: () {
+                      onPressed: () async {
                         final String name = _nameController.text;
                         final int? accountNumber =
                             int.tryParse(_accountNumberController.text);
                         final Contact newContact =
                             Contact(0, name, accountNumber!);
-                        Navigator.pop(context, newContact);
+                        await saveAsync(newContact);
+                        await findAllAsync();
+                        Navigator.pop(context);
                       },
                       child: const Text("Salvar"))),
             )

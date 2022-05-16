@@ -19,7 +19,7 @@ Future<Database> createDatabase() async {
 
 Future<int> saveAsync(Contact contact) async {
   final db = await createDatabase();
-  final Map<String, dynamic> contactMap = Map();
+  final Map<String, dynamic> contactMap = {};
   contactMap['name'] = contact.name;
   contactMap['account_number'] = contact.accountNumber;
   return await db.insert('contacts', contactMap);

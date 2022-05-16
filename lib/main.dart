@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:mattbank/screens/dashboard.dart';
 
-import 'database/appDatabase.dart';
+import 'database/app_database.dart';
 import 'modelo/contact.dart';
 
 void main() async {
   runApp(const MattBankApp());
-  await saveAsync(Contact(0, 'Mariana', 2000));
+  await saveAsync(Contact(0, 'Mateus', 5500));
   var contacts = await findAllAsync();
   debugPrint(contacts.toString());
 }
@@ -24,6 +24,6 @@ class MattBankApp extends StatelessWidget {
                 style: ButtonStyle(
                     backgroundColor:
                         MaterialStateProperty.all(Colors.cyanAccent[700])))),
-        home: Dashboard());
+        home: const Dashboard());
   }
 }

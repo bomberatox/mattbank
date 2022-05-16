@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:mattbank/modelo/contact.dart';
 
 class ContactForm extends StatefulWidget {
+  const ContactForm({Key? key}) : super(key: key);
+
   @override
   State<ContactForm> createState() => _ContactFormState();
 }
@@ -24,19 +26,19 @@ class _ContactFormState extends State<ContactForm> {
           children: [
             TextField(
               controller: _nameController,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 labelText: "Nome completo",
               ),
-              style: TextStyle(fontSize: 16),
+              style: const TextStyle(fontSize: 16),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 8),
               child: TextField(
                 controller: _accountNumberController,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: "Número da conta",
                 ),
-                style: TextStyle(fontSize: 16),
+                style: const TextStyle(fontSize: 16),
                 keyboardType: TextInputType.number,
               ),
             ),
@@ -53,7 +55,7 @@ class _ContactFormState extends State<ContactForm> {
                             Contact(0, name, accountNumber!);
                         Navigator.pop(context, newContact);
                       },
-                      child: Text("Salvar"))),
+                      child: const Text("Salvar"))),
             )
           ],
         ),

@@ -7,18 +7,11 @@
 + Armazenamento interno com SQLite.
 
 ## Descrição de telas:
-<table>
-  <tr>
-    <td>Dashboard</td>
-    <td>Contatos</td>
-    <td>Novo contato</td>
-  </tr>
-  <tr>
-    <td>Tela de início</td>
-    <td>Lista de contatos cadastrados</td>
-    <td>Tela de responsabilidade para adição de cadastro.</td>
-  </tr>
-</table>
+|Tela|Função|
+|------------|------------------------------------------------|
+|Dashboard|Tela de início|
+|Transfer|Lista de contatos cadastrados|
+|New contact|Tela de responsabilidade para adição de cadastro|
 
 ## Tecnologias utilizadas:
 + Flutter.

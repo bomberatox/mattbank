@@ -12,9 +12,9 @@ class MattBankApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         theme: ThemeData(
-            primaryColor: Colors.teal[400],
+            primaryColor: Colors.cyan[800],
             colorScheme: ColorScheme.fromSwatch().copyWith(
-                primary: Colors.teal[400], secondary: Colors.cyanAccent[700]),
+                primary: Colors.cyan[800], secondary: Colors.cyanAccent[700]),
             elevatedButtonTheme: ElevatedButtonThemeData(
                 style: ButtonStyle(
                     backgroundColor:

@@ -18,7 +18,7 @@ class _ContactsListState extends State<ContactsList> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Contatos"),
+        title: const Text("Transfer"),
       ),
       body: FutureBuilder(
         future: _dao.findAll(),
@@ -33,7 +33,7 @@ class _ContactsListState extends State<ContactsList> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: const [
                     CircularProgressIndicator(),
-                    Text("Carregando...")
+                    Text("Loading")
                   ],
                 ),
               );
@@ -48,7 +48,7 @@ class _ContactsListState extends State<ContactsList> {
                   },
                   itemCount: contacts.length);
           }
-          return const Text("Erro desconhecido");
+          return const Text("Unknown error");
         },
       ),
       floatingActionButton: FloatingActionButton(

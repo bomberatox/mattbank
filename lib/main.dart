@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:mattbank/screens/dashboard.dart';
 
-import 'database/app_database.dart';
-
 void main() async {
   runApp(const MattBankApp());
-  var contacts = await findAllAsync();
-  debugPrint(contacts.toString());
 }
 
 class MattBankApp extends StatelessWidget {
   const MattBankApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

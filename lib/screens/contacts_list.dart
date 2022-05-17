@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mattbank/database/app_database.dart';
+import 'package:mattbank/database/dao/contact_dao.dart';
 import 'package:mattbank/screens/contact_form.dart';
 
 import '../modelo/contact.dart';
@@ -12,6 +12,8 @@ class ContactsList extends StatefulWidget {
 }
 
 class _ContactsListState extends State<ContactsList> {
+  final ContactDao _dao = ContactDao();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,7 +21,7 @@ class _ContactsListState extends State<ContactsList> {
         title: const Text("Contatos"),
       ),
       body: FutureBuilder(
-        future: findAllAsync(),
+        future: _dao.findAll(),
         builder: (context, snapshot) {
           switch (snapshot.connectionState) {
             case ConnectionState.none:
@@ -51,8 +53,10 @@ class _ContactsListState extends State<ContactsList> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.of(context).push(
-              MaterialPageRoute(builder: (context) => const ContactForm())).then((value) => setState(() {}));
+          Navigator.of(context)
+              .push(
+                  MaterialPageRoute(builder: (context) => const ContactForm()))
+              .then((value) => setState(() {}));
         },
         child: const Icon(Icons.add),
       ),

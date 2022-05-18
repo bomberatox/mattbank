@@ -8,10 +8,11 @@
 
 ## Descrição de telas:
 |Tela|Função|
-|------------|------------------------------------------------|
+|----------------|------------------------------------------------|
 |Dashboard|Tela de início|
 |Transfer|Lista de contatos cadastrados|
 |New contact|Tela de responsabilidade para adição de cadastro|
+|Transaction feed|Lista de transferências executadas|
 
 ## Tecnologias utilizadas:
 + Flutter.

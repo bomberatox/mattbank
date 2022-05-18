@@ -24,25 +24,46 @@ class _DashboardState extends State<Dashboard> {
               padding: const EdgeInsets.all(8),
               child: Image.asset('images/mattBankLogo.png'),
             ),
-            Row(
-              children: const [
-                _FeatureItem('Transfer', Icons.monetization_on),
-                _FeatureItem('Transaction feed', Icons.description)
-              ],
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: [
+                  _FeatureItem(
+                    'Transfer',
+                    Icons.monetization_on,
+                    onClick: () {
+                      _showContactsList();
+                    },
+                  ),
+                  _FeatureItem(
+                    'Transaction feed',
+                    Icons.description,
+                    onClick: () {
+                      debugPrint("Transaction feed was clicked");
+                    },
+                  )
+                ],
+              ),
             ),
           ],
         ),
       ),
     );
   }
+
+  void _showContactsList(){
+    Navigator.of(context).push(
+        MaterialPageRoute(builder: (context) => const ContactsList()));
+  }
+
 }
 
 class _FeatureItem extends StatelessWidget {
-
   final String _name;
   final IconData _icon;
+  final Function onClick;
 
-  const _FeatureItem(this._name, this._icon);
+  const _FeatureItem(this._name, this._icon, {required this.onClick});
 
   @override
   Widget build(BuildContext context) {
@@ -51,9 +72,7 @@ class _FeatureItem extends StatelessWidget {
       child: Material(
         color: Theme.of(context).primaryColor,
         child: InkWell(
-          onTap: (){
-            Navigator.of(context).push(MaterialPageRoute(builder: (context) => const ContactsList()));
-          },
+          onTap: () => onClick(),
           child: Container(
             padding: const EdgeInsets.all(8),
             height: 100,

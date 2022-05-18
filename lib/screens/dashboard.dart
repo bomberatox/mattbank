@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mattbank/screens/contacts_list.dart';
+import 'package:mattbank/screens/transactions_list.dart';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({Key? key}) : super(key: key);
@@ -31,16 +32,12 @@ class _DashboardState extends State<Dashboard> {
                   _FeatureItem(
                     'Transfer',
                     Icons.monetization_on,
-                    onClick: () {
-                      _showContactsList();
-                    },
+                    onClick: () => _showContactsList(),
                   ),
                   _FeatureItem(
                     'Transaction feed',
                     Icons.description,
-                    onClick: () {
-                      debugPrint("Transaction feed was clicked");
-                    },
+                    onClick: () => _showTransactionsList(),
                   )
                 ],
               ),
@@ -51,11 +48,15 @@ class _DashboardState extends State<Dashboard> {
     );
   }
 
-  void _showContactsList(){
-    Navigator.of(context).push(
-        MaterialPageRoute(builder: (context) => const ContactsList()));
+  void _showContactsList() {
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: (context) => const ContactsList()));
   }
 
+  void _showTransactionsList() {
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: (context) => TransactionList()));
+  }
 }
 
 class _FeatureItem extends StatelessWidget {

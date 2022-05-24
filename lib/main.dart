@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:mattbank/http/webclient.dart';
 import 'package:mattbank/screens/dashboard.dart';
 
 void main() async {
   runApp(const MattBankApp());
+  findAll();
 }
 
 class MattBankApp extends StatelessWidget {
